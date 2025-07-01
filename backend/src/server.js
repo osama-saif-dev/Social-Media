@@ -7,10 +7,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirnameApp = path.dirname(__filename);
 
 if (process.env.NODE_ENV !== 'production') {
-    config({
-        path: path.resolve(__dirnameApp, '..', '.env'),
-        debug: true,
-    });
+  config({
+    path: path.resolve(__dirnameApp, '..', '.env'),
+    debug: true,
+  });
 }
 
 import cors from 'cors';
@@ -26,7 +26,7 @@ import history from 'connect-history-api-fallback';
 const port = process.env.PORT || 5000;
 
 const __dirName = path.resolve();
-
+console.log('💥 MONGO_URL =', process.env.MONGO_URL);
 connectDb();
 
 app.use(express.json());
