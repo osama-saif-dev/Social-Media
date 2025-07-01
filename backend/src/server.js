@@ -1,5 +1,5 @@
 import express from 'express';
-import 'dotenv/config';
+import { config } from 'dotenv';
 import cors from 'cors';
 import connectDb from './lib/db.js';
 import cookieParser from 'cookie-parser';
@@ -12,7 +12,10 @@ import path from 'path';
 import history from 'connect-history-api-fallback';
 
 const port = process.env.PORT || 5000;
+
 const __dirName = path.resolve();
+const envPath = path.join(__dirName, '.env');
+config({ path: envPath });
 
 connectDb();
 
