@@ -9,14 +9,12 @@ import postRouter from './routes/post.route.js';
 import messageRouter from './routes/message.route.js';
 import { app, server } from './lib/socket.js';
 import path from 'path';
+import history from 'connect-history-api-fallback';
 
-
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 const __dirName = path.resolve();
 
 connectDb();
-
-
 
 app.use(express.json());
 app.use(cookieParser());
@@ -24,10 +22,6 @@ app.use(cors({
     origin: ['http://localhost:5173'],
     credentials: true
 }));
-
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
 
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
@@ -43,14 +37,18 @@ app.use((err, req, res, next) => {
 });
 
 if (process.env.NODE_ENV === 'production') {
-    // app.use(history());
+    app.use(history());
     app.use(express.static(path.join(__dirName, "../frontend/dist")));
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirName, '../frontend', 'dist', 'index.html'))
-    })
+    //     app.get("*", (req, res) => {
+    //     if (!req.path.startsWith('/api')) {
+    //         res.sendFile(path.join(__dirName, "../frontend/dist/index.html"));
+    //     } else {
+    //         res.status(404).json({ error: 'API endpoint not found' });
+    //     }
+    // });
 }
 
 server.listen(port, () => {
-    console.log(`Server runinng on port ${port}`)
+    console.log(`Server runinng on port ${port}`);
 });
 

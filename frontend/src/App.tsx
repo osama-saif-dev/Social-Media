@@ -22,6 +22,7 @@ import { ToastContainer } from 'react-toastify';
 import PostPage from "./Pages/PostPage";
 import SuggestedFriendsPage from "./Pages/SuggestedFriendsPage";
 import MessagesNotification from "./Pages/MessagesNotification";
+import NotFoundPage from "./Pages/NotFoundPage";
 
 export default function App() {
   useSocket();
@@ -111,6 +112,7 @@ export default function App() {
         <Route path="/verify-code" element={temporaryToken ? <VerifyCode /> : <Navigate to={'/login'} />} />
         <Route path="/forget-password" element={!accessToken ? <ForgetPassword /> : <Navigate to={'/'} />} />
         <Route path="/reset-password" element={!accessToken ? <ResetPassword /> : <Navigate to={'/'} />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Toaster />
     </div>
