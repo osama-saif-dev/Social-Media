@@ -14,8 +14,7 @@ import history from 'connect-history-api-fallback';
 const port = process.env.PORT || 5000;
 
 const __dirName = path.resolve();
-const envPath = path.join(__dirName, '.env');
-config({ path: envPath });
+config({ path: path.resolve(process.cwd(), '.env') });
 
 connectDb();
 
