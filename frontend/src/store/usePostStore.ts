@@ -229,7 +229,7 @@ export const usePostStore = create<PostState>((set, get) => ({
         const pathName = window.location.pathname;
         const { myPosts, post, friendPosts } = get();
         try {
-            const res = await axiosInstance.delete(`/post/${postId}/${commentId}`, {
+            const res = await axiosInstance.delete(`/post/comment/${postId}/${commentId}`, {
                 headers: { Authorization: `Bearer ${accessToken}` }
             });
             toast.success(res.data.message);

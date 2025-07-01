@@ -30,7 +30,7 @@ router.get('/bookmarks', getBookMarks);
 router.get('/search', searchPost);
 
 router.get('/book-marks/:id', toogleBookMarks);
-router.delete('/:postId/:commentId', deleteComment);
+router.delete('/comment/:postId/:commentId', deleteComment);
 router.patch('/like/:id', toggleLike);
 router.patch('/:id', upload.single('image'), updatePost);
 router.delete('/:id', deletePost);
