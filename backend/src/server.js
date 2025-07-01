@@ -6,10 +6,12 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirnameApp = path.dirname(__filename);
 
-config({
-  path: path.resolve(__dirnameApp, '..', '.env'),
-  debug: true,
-});
+if (process.env.NODE_ENV !== 'production') {
+    config({
+        path: path.resolve(__dirnameApp, '..', '.env'),
+        debug: true,
+    });
+}
 
 import cors from 'cors';
 import connectDb from './lib/db.js';
@@ -50,6 +52,7 @@ app.use((err, req, res, next) => {
 if (process.env.NODE_ENV === 'production') {
     app.use(history());
     app.use(express.static(path.join(__dirName, "../frontend/dist")));
+
 }
 
 server.listen(port, () => {
