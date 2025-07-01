@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    font-family: "Inter", sans-serif;
+}
+
+.prev {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.next {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.left{
+    animation: left alternate linear 0.5s infinite;
+}
+
+.right{
+    animation: right alternate linear 0.5s infinite;
+}  
+ 
+@keyframes left {
+    to {
+        transform: translateX(-5px);
+    }
+}
+@keyframes right {
+    to {
+        transform: translateX(5px);
+    }
+}
+
