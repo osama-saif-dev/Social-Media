@@ -1,5 +1,16 @@
 import express from 'express';
 import { config } from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirnameApp = path.dirname(__filename);
+
+config({
+  path: path.resolve(__dirnameApp, '..', '.env'),
+  debug: true,
+});
+
 import cors from 'cors';
 import connectDb from './lib/db.js';
 import cookieParser from 'cookie-parser';
@@ -14,7 +25,6 @@ import history from 'connect-history-api-fallback';
 const port = process.env.PORT || 5000;
 
 const __dirName = path.resolve();
-config({ path: path.resolve(process.cwd(), '.env') });
 
 connectDb();
 
