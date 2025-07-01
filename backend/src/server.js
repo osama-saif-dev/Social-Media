@@ -1,6 +1,6 @@
 import express from 'express';
-import cors from 'cors';
 import 'dotenv/config';
+import cors from 'cors';
 import connectDb from './lib/db.js';
 import cookieParser from 'cookie-parser';
 import authRouter from './routes/auth.route.js';
@@ -39,13 +39,6 @@ app.use((err, req, res, next) => {
 if (process.env.NODE_ENV === 'production') {
     app.use(history());
     app.use(express.static(path.join(__dirName, "../frontend/dist")));
-    //     app.get("*", (req, res) => {
-    //     if (!req.path.startsWith('/api')) {
-    //         res.sendFile(path.join(__dirName, "../frontend/dist/index.html"));
-    //     } else {
-    //         res.status(404).json({ error: 'API endpoint not found' });
-    //     }
-    // });
 }
 
 server.listen(port, () => {
