@@ -19,7 +19,6 @@ import userRouter from './routes/user.route.js';
 import postRouter from './routes/post.route.js';
 import messageRouter from './routes/message.route.js';
 import { app, server } from './lib/socket.js';
-import path from 'path';
 import history from 'connect-history-api-fallback';
 
 const port = process.env.PORT || 5000;
