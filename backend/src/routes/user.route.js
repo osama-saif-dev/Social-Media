@@ -25,7 +25,7 @@ router.get('/suggested-friends', suggestedFriends);
 
 // user
 router.get('/friends', getFriends);
-router.delete('/remove/accepted-request/:id', removeAcceptRequest);
+router.delete('/remove/accepted-request/:id', removeAcceptRequest)
 router.delete('/friend/:id', deleteFriend);
 router.get('/profile/:id', getUser);
 
