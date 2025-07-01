@@ -17,12 +17,11 @@ export const useUserStore = create<UserState>((set, get) => ({
         const { accessToken } = useAuthStore.getState();
         const { setTotalLikes, page } = usePostStore.getState();
         try {
-            const res = await axiosInstance.get(`/user/${id}?page=${page}`, {
+            const res = await axiosInstance.get(`/user/profile/${id}?page=${page}`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
             });
-            // when i get user posts and show it check the socket it called (store_comment) for updating user post comment
             const { totalLikes, user, posts, totalPages } = res.data;
             set({ user, userPosts: posts });
             usePostStore.setState(() => { return { totalPages: totalPages } })
@@ -51,7 +50,7 @@ export const useUserStore = create<UserState>((set, get) => ({
         const { user } = get();
         set({ isDeletingFriend: true });
         try {
-            await axiosInstance.delete(`/user/${id}`, {
+            await axiosInstance.delete(`/user/friend/${id}`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
