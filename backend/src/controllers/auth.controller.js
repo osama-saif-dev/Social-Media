@@ -132,7 +132,7 @@ export const forgetPassword = asyncHandler(async (req, res) => {
     existedUser.resetPasswordExpires = expires;
     await existedUser.save();
 
-    const link = `http://localhost:5173/reset-password?token=${token}`;
+    const link = `http://localhost:5000/reset-password?token=${token}`;
     await sendEmail({ 
         to: existedUser.email,
         subject: 'Reset password',

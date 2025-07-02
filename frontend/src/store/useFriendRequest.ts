@@ -122,7 +122,6 @@ export const useFriendRequest = create<FriendRequestState>((set, get) => ({
                 const filterUsers = state.suggestedFriends?.filter((friend) => friend._id !== receiverId);
                 return { suggestedFriends: filterUsers }
             });
-            
             return true;
         } catch (error) {
             console.log(error);
