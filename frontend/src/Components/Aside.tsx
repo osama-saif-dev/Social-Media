@@ -26,7 +26,7 @@ export default function Aside() {
     const { notificationCount } = useFriendRequest();
     const { messagesNotification} = useMessageStore()
     return (
-        <aside className="hidden lg:flex flex-col gap-3 w-[250px] xl:w-[300px] bg-secondary rounded-md p-4 sticky top-[20px] self-start">
+        <aside className="hidden lg:flex flex-col gap-3 w-[250px] xl:w-[300px] bg-secondary rounded-md p-4 sticky top-[20px] z-0 self-start">
             {links && links.length > 0 && (
                 links.map((link, index) => (
                     <Link to={link.to} key={index}
