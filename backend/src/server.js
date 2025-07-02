@@ -7,10 +7,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirnameApp = path.dirname(__filename);
 
 if (process.env.NODE_ENV !== 'production') {
-  config({
-    path: path.resolve(__dirnameApp, '..', '.env'),
-    debug: true,
-  });
+    config({
+        path: path.resolve(__dirnameApp, '..', '.env'),
+        debug: true,
+    });
 }
 
 import cors from 'cors';
@@ -33,7 +33,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
     origin: [process.env.FRONTEND_URL],
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use('/api/auth', authRouter);
