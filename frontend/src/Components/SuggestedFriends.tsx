@@ -17,7 +17,7 @@ export default function SuggestedFriends() {
   const handleAddFriend = async (recieverId: string | undefined) => sendFriendRequest(recieverId);
 
   return (
-    <div className="hidden lg:flex flex-col gap-3 w-full md:w-[280px] xl:w-[350px] text-center bg-secondary rounded-md p-4 md:sticky top-[20px] self-start">
+    <div className="hidden lg:flex flex-col gap-3 w-full md:w-[280px] xl:w-[350px] text-center bg-secondary rounded-md p-4 md:sticky top-[20px] z-0 self-start">
       <h1 className="font-bold text-[25px]">Suggested Friends</h1>
       <div className={`${suggestedFriends?.length > 0 && ' mt-4'} space-y-4`}>
         {suggestedFriends?.length > 0 ? (

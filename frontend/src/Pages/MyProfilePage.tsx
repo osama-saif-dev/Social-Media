@@ -40,7 +40,7 @@ export default function MyProfilePage() {
       <div className='flex flex-col items-center gap-6'>
         {/* Edit Profile Card */}
         {show && (
-          <div className='bg-[#b0b0b0e8] absolute left-0 top-0 w-full h-full' onClick={() => setShow(!show)}>
+          <div className='bg-[#b0b0b0e8] absolute left-0 top-0 w-full h-full z-10' onClick={() => setShow(!show)}>
             <div onClick={(e) => e.stopPropagation()} className='fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[100] p-4 rounded-md bg-secondary w-3/4 lg:w-1/2'>
               <div className='flex items-center justify-between'>
                 <h1 className='text-[20px] font-semibold'>Edit Profile</h1>
