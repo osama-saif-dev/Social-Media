@@ -7,10 +7,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirnameApp = path.dirname(__filename);
 
 if (process.env.NODE_ENV !== 'production') {
-    config({
-        path: path.resolve(__dirnameApp, '..', '.env'),
-        debug: true,
-    });
+  config({
+    path: path.resolve(__dirnameApp, '..', '.env'),
+    debug: true,
+  });
 }
 
 import cors from 'cors';
@@ -26,19 +26,13 @@ import history from 'connect-history-api-fallback';
 const port = process.env.PORT || 5000;
 
 const __dirName = path.resolve();
-console.log('💥 MONGO_URL =', process.env.MONGO_URL);
 connectDb();
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' 
-        ? [process.env.FRONTEND_URL, 'https://social-media-frontend-pi-lime.vercel.app']
-        : ['http://localhost:3000', 'http://localhost:5173'],
+    origin: [process.env.FRONTEND_URL],
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-    optionsSuccessStatus: 200
 }));
 
 app.use('/api/auth', authRouter);
@@ -61,6 +55,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 server.listen(port, () => {
-    console.log(`Server runinng on port ${port}`);
+    console.log(`Server runinng on port http://localhost:${port}`);
 });
 
